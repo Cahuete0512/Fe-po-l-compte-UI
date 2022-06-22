@@ -14,6 +14,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/family-event-finance",
+            "baseHref": "/family-event-finance/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,6 +63,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "proxyConfig": "src/proxy.conf.json",
           "configurations": {
             "production": {
               "browserTarget": "familyEventFinance:build:production"
@@ -97,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
