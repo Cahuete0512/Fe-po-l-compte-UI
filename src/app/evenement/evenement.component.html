@@ -1,1 +1,22 @@
-<p>evenement works!</p>
+<div class="container">
+  <div class ="card">
+    <div class ="card-body">
+      <table class=""table table-striped>
+        <thead>
+        <th>id</th>
+        <th>libelle</th>
+        <th>date de creation</th>
+        <th>lieu</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let evenement of apiEvenementList">
+            <td>{{evenement.id}}</td>
+            <td>{{evenement.libelle}}</td>
+            <td>{{evenement.date_creation}}</td>
+            <td>{{evenement.lieu}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
