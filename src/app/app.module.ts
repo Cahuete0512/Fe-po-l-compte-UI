@@ -8,12 +8,14 @@ import {HttpClientModule} from "@angular/common/http";
 import {GetEvenementService} from "./Service/GetEvenement.service";
 import { CreatEvenementComponent } from './creat-evenement/creat-evenement.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ModifEvenementComponent } from './modif-evenement/modif-evenement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EvenementComponent,
-    CreatEvenementComponent
+    CreatEvenementComponent,
+    ModifEvenementComponent
   ],
   imports: [
     BrowserModule,

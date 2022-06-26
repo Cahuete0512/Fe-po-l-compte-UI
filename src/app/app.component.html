@@ -1,21 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ecd8e0;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Family Event Finance</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="accueil" routerLink="/evenement" routerLinkActive="active" ariaCurrentWhenActive="page">Accueil</a>
-        <a class="nav-link" href="ajout" routerLink="/creatEvenement" routerLinkActive="active" ariaCurrentWhenActive="page">Ajouter</a>
-        <a class="nav-link" href="modif" routerLink="/modifEvenement" routerLinkActive="active" ariaCurrentWhenActive="page">Modifier l'évenement</a>
-        <a class="nav-link" href="supprimer" routerLink="/suppEvenement" routerLinkActive="active" ariaCurrentWhenActive="page">Supprimer l'évenement</a>
-
-      </div>
-    </div>
-  </div>
-</nav><br/>
 <!--<div [ngStyle]="{backgroundImage:'url(../assets/images/neveuxNiecesNounou.jpg)'}" >-->
 <!--</div>-->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ecd8e0;">
+  <a class="navbar-brand" href="#">Family Event Finance</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link active" aria-current="page" href="accueil"
+           routerLink="/evenement" routerLinkActive="active" ariaCurrentWhenActive="page">Accueil
+          <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/creatEvenement"
+           routerLinkActive="active" ariaCurrentWhenActive="page">Ajouter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/modifEvenement"
+           routerLinkActive="active" ariaCurrentWhenActive="page">Modifier l'évenement</a>
+      </li>
+    </ul>
+  </div>
+</nav><br/>
 <router-outlet></router-outlet>
 

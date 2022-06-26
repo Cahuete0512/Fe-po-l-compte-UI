@@ -14,8 +14,15 @@
       <td>{{evenement.libelle}}</td>
       <td>{{evenement.date_creation}}</td>
       <td>{{evenement.lieu}}</td>
-      <td><button routerLink="/evenement/modifEvenement" type="button" class="btn btn-outline-warning" (click)="modifEvenement()">Modifier</button>
-        <button routerLink="/evenement/suppEvenement"  type="button" class="btn btn-outline-danger" (click)="suppEvenement()">Supprimer</button>
+      <td>
+        <div class="row">
+          <div class="col-sm-3">
+            <button routerLink="/evenement/modifEvenement/{{evenement.id}}" type="button" class="btn btn-outline-warning">Modifier</button>
+          </div>
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-outline-danger" (click)="suppEvenement(evenement)">Supprimer</button>
+          </div>
+        </div>
       </td>
     </tr>
     </tbody>

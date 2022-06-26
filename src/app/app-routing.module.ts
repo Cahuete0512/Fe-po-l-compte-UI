@@ -7,7 +7,8 @@ import {CreatEvenementComponent} from "./creat-evenement/creat-evenement.compone
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'evenement' },
   { path: 'evenement', component: EvenementComponent },
-  { path: 'creatEvenement', component: CreatEvenementComponent}
+  { path: 'creatEvenement', component: CreatEvenementComponent},
+  { path: 'evenement/modifEvenement/:id', component: CreatEvenementComponent}
   ];
 
 @NgModule({

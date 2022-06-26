@@ -38,12 +38,19 @@ export class EvenementComponent implements OnInit {
   getEvenements(): Observable<any> {
     return this.http.get(this.url + '/evenement', {headers: this.headers});
   }
+  //
+  // modifEvenement(){
+  //   this.router.navigate(['/evenement/modifEvenement/']);
+  // }
 
-  modifEvenement(){
-    this.router.navigate(['/evenement/modifEvenement']);
-  }
-
-  suppEvenement(){
-    this.router.navigate(['/evenement/suppEvenement']);
+  suppEvenement(evenement: any){
+    let apiEvenementList = this.apiEvenementList;
+    console.log('suppression ' + evenement.id);
+    this.http.delete(this.url + '/evenement/suppEvenement/'+evenement.id).subscribe({
+      next(value) {
+        console.log("suppression OK");
+        apiEvenementList.splice(apiEvenementList.indexOf(evenement), 1);
+      }
+    });
   }
 }
