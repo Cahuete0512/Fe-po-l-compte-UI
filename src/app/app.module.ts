@@ -6,16 +6,20 @@ import { AppComponent } from './app.component';
 import { EvenementComponent } from './evenement/evenement.component';
 import {HttpClientModule} from "@angular/common/http";
 import {GetEvenementService} from "./Service/GetEvenement.service";
+import { CreatEvenementComponent } from './creat-evenement/creat-evenement.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
-    EvenementComponent
+    EvenementComponent,
+    CreatEvenementComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

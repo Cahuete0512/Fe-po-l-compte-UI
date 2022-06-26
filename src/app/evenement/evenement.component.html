@@ -1,22 +1,23 @@
 <div class="container">
-  <div class ="card">
-    <div class ="card-body">
-      <table class=""table table-striped>
-        <thead>
-        <th>id</th>
-        <th>libelle</th>
-        <th>date de creation</th>
-        <th>lieu</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let evenement of apiEvenementList">
-            <td>{{evenement.id}}</td>
-            <td>{{evenement.libelle}}</td>
-            <td>{{evenement.date_creation}}</td>
-            <td>{{evenement.lieu}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <h1 style="text-align: center;">Récap des évenements organisés</h1><br/>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>libelle</th>
+      <th>date_creation</th>
+      <th>lieu</th>
+      <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let evenement of apiEvenementList">
+      <td>{{evenement.libelle}}</td>
+      <td>{{evenement.date_creation}}</td>
+      <td>{{evenement.lieu}}</td>
+      <td><button routerLink="/evenement/modifEvenement" type="button" class="btn btn-outline-warning" (click)="modifEvenement()">Modifier</button>
+        <button routerLink="/evenement/suppEvenement"  type="button" class="btn btn-outline-danger" (click)="suppEvenement()">Supprimer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>

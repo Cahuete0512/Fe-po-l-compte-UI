@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-evenement',
@@ -16,7 +17,7 @@ export class EvenementComponent implements OnInit {
     .set('Access-Control-Allow-Origin', '*');
   apiEvenementList: any = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
 
@@ -36,5 +37,13 @@ export class EvenementComponent implements OnInit {
 
   getEvenements(): Observable<any> {
     return this.http.get(this.url + '/evenement', {headers: this.headers});
+  }
+
+  modifEvenement(){
+    this.router.navigate(['/evenement/modifEvenement']);
+  }
+
+  suppEvenement(){
+    this.router.navigate(['/evenement/suppEvenement']);
   }
 }
