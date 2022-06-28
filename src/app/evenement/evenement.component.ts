@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
-import {URL_BACK} from "../creat-evenement/creat-evenement.component";
+import {URL_BACK} from "../Constantes/app.const";
 
 @Component({
   selector: 'app-evenement',
