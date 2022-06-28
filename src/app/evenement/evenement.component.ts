@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
+import {URL_BACK} from "../creat-evenement/creat-evenement.component";
 
 @Component({
   selector: 'app-evenement',
@@ -11,7 +12,6 @@ import {Router} from "@angular/router";
 
 export class EvenementComponent implements OnInit {
 
-  private url = 'http://localhost:8080';
   private headers= new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
@@ -36,7 +36,7 @@ export class EvenementComponent implements OnInit {
   }
 
   getEvenements(): Observable<any> {
-    return this.http.get(this.url + '/evenement', {headers: this.headers});
+    return this.http.get(URL_BACK + '/evenement', {headers: this.headers});
   }
   //
   // modifEvenement(){
@@ -46,7 +46,7 @@ export class EvenementComponent implements OnInit {
   suppEvenement(evenement: any){
     let apiEvenementList = this.apiEvenementList;
     console.log('suppression ' + evenement.id);
-    this.http.delete(this.url + '/evenement/suppEvenement/'+evenement.id).subscribe({
+    this.http.delete(URL_BACK + '/evenement/suppEvenement/'+evenement.id).subscribe({
       next(value) {
         console.log("suppression OK");
         apiEvenementList.splice(apiEvenementList.indexOf(evenement), 1);

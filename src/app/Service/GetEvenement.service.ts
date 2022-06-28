@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from  '@angular/common/http';
 import {Observable} from "rxjs";
+import {URL_BACK} from "../Constantes/app.const";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class GetEvenementService {
-  private url = 'http://localhost:8080';
 
   private test:String = "";
 
@@ -25,11 +25,11 @@ export class GetEvenementService {
   }
 
   getEvenements(): Observable<any> {
-    return this.http.get(this.url + '/evenement');
+    return this.http.get(URL_BACK + '/evenement');
   }
 
   addEvenement(evenement: any, id:number){
     evenement.id = id;
-    return this.http.post(this.url + '/evenement', evenement);
+    return this.http.post(URL_BACK + '/evenement', evenement);
   }
 }

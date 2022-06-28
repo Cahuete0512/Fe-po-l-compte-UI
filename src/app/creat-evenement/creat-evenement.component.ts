@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, FormBuilder} from "@angular/forms";
 import {HttpClient, HttpHeaders, HttpClientModule } from "@angular/common/http";
 import {first, Observable} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, provideRoutes, Router} from "@angular/router";
+import {EVENT_ROUTE} from "../app-routing.module";
+import {URL_BACK} from "../Constantes/app.const";
 
 @Component({
   selector: 'app-creat-evenement',
@@ -16,7 +18,6 @@ export class CreatEvenementComponent implements OnInit {
   idEvenement!: string;
   isCreation!: boolean;
   evenementForm!: FormGroup;
-  private url = 'http://localhost:8080';
   private headers= new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
@@ -40,7 +41,7 @@ export class CreatEvenementComponent implements OnInit {
 
     if(!this.isCreation) {
 
-      this.http.get(this.url + '/evenement/'+this.idEvenement, {headers: this.headers})
+      this.http.get(URL_BACK + '/evenement/'+this.idEvenement, {headers: this.headers})
         .pipe(first())
         .subscribe(ev => this.evenementForm.patchValue(ev));
 
@@ -62,13 +63,18 @@ export class CreatEvenementComponent implements OnInit {
         }
       });
     }
+    this.redirectApresValid();
   }
 
   postEvenements(): Observable<any> {
-    return this.http.post(this.url + '/evenement', this.evenementForm.value, {headers: this.headers});
+    return this.http.post(URL_BACK + '/evenement', this.evenementForm.value, {headers: this.headers});
   }
 
   putEvenement(): Observable<any> {
-    return this.http.put(this.url + '/evenement/'+this.idEvenement, this.evenementForm.value, {headers: this.headers});
+    return this.http.put(URL_BACK + '/evenement/'+this.idEvenement, this.evenementForm.value, {headers: this.headers});
+  }
+
+  redirectApresValid(){
+    this.router.navigate([(EVENT_ROUTE)])
   }
 }
