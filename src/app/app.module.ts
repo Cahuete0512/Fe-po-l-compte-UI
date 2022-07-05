@@ -7,12 +7,14 @@ import { EvenementListComponent } from './evenementList/evenementList.component'
 import {HttpClientModule} from "@angular/common/http";
 import { CreatEvenementComponent } from './creat-evenement/creat-evenement.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { EvenementComponent } from './evenement/evenement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EvenementListComponent,
-    CreatEvenementComponent
+    CreatEvenementComponent,
+    EvenementComponent
   ],
   imports: [
     BrowserModule,

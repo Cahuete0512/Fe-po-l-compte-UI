@@ -67,7 +67,7 @@ export class CreatEvenementComponent implements OnInit {
         }
       });
     }
-    this.redirectApresValid();
+    this.redirectApresClique();
   }
 
   postEvenements(): Observable<any> {
@@ -78,7 +78,7 @@ export class CreatEvenementComponent implements OnInit {
     return this.http.put(URL_BACK + '/evenement/', this.evenementForm.value, {headers: this.headers});
   }
 
-  redirectApresValid(){
+  redirectApresClique(){
     this.router.navigate([(EVENT_ROUTE)])
   }
 
@@ -93,5 +93,6 @@ export class CreatEvenementComponent implements OnInit {
           apiEvenementList.splice(apiEvenementList.indexOf(id), 1);
         }
       });
+    this.redirectApresClique();
   }
 }
