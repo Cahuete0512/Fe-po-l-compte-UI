@@ -7,7 +7,7 @@ import {EVENT_ROUTE} from "../app-routing.module";
 import {URL_BACK} from "../Constantes/app.const";
 
 @Component({
-  selector: 'app-creat-evenement',
+  selector: 'app-creat-evenementList',
   templateUrl: './creat-evenement.component.html',
   styleUrls: ['./creat-evenement.component.css']
 })
