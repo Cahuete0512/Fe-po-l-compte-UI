@@ -6,7 +6,7 @@ import {CreatEvenementComponent} from "./creat-evenement/creat-evenement.compone
 
 export const EVENT_ROUTE = 'evenement';
 export const CREAT_EVENT = 'creatEvenement';
-export const MODIF_EVENT = 'evenement/modifEvenement/:id';
+export const MODIF_EVENT = 'evenement/:id';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'evenement' },

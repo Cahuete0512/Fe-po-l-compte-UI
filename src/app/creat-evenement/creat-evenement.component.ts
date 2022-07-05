@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, FormBuilder} from "@angular/forms";
-import {HttpClient, HttpHeaders, HttpClientModule } from "@angular/common/http";
+import {Component, Input, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {first, Observable} from "rxjs";
-import {ActivatedRoute, provideRoutes, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {EVENT_ROUTE} from "../app-routing.module";
 import {URL_BACK} from "../Constantes/app.const";
 
@@ -13,10 +13,10 @@ import {URL_BACK} from "../Constantes/app.const";
 })
 
 export class CreatEvenementComponent implements OnInit {
-
-
+  @Input() apiEvenementList: any = [];
   idEvenement!: string;
   isCreation!: boolean;
+  evenement: any;
   evenementForm!: FormGroup;
   private headers= new HttpHeaders()
     .set('content-type', 'application/json')
@@ -34,16 +34,20 @@ export class CreatEvenementComponent implements OnInit {
 
 
     this.evenementForm = this.fb.group({
-      libelle: [],
-      date_creation: [],
-      lieu: [],
+      id: [],
+      name: [],
+      date: [],
+      place: [],
     });
 
     if(!this.isCreation) {
 
-      this.http.get(URL_BACK + '/evenement/'+this.idEvenement, {headers: this.headers})
+      this.http.get(URL_BACK+'/evenement/'+this.idEvenement, {headers: this.headers})
         .pipe(first())
-        .subscribe(ev => this.evenementForm.patchValue(ev));
+        .subscribe(ev => {
+          this.evenementForm.patchValue(ev);
+          this.evenement = ev;
+        });
 
     }
   }
@@ -67,14 +71,27 @@ export class CreatEvenementComponent implements OnInit {
   }
 
   postEvenements(): Observable<any> {
-    return this.http.post(URL_BACK + '/evenement', this.evenementForm.value, {headers: this.headers});
+    return this.http.post(URL_BACK + '/evenement/create', this.evenementForm.value, {headers: this.headers});
   }
 
   putEvenement(): Observable<any> {
-    return this.http.put(URL_BACK + '/evenement/'+this.idEvenement, this.evenementForm.value, {headers: this.headers});
+    return this.http.put(URL_BACK + '/evenement/', this.evenementForm.value, {headers: this.headers});
   }
 
   redirectApresValid(){
     this.router.navigate([(EVENT_ROUTE)])
+  }
+
+  suppEvenement(){
+    let apiEvenementList = this.apiEvenementList;
+    let id = this.idEvenement;
+    console.log('suppression ' + this.idEvenement);
+    this.http.delete(URL_BACK + '/evenement/suppEvenement/'+this.idEvenement)
+      .subscribe({
+        next(value) {
+          console.log("suppression OK");
+          apiEvenementList.splice(apiEvenementList.indexOf(id), 1);
+        }
+      });
   }
 }

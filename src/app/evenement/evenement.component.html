@@ -4,26 +4,16 @@
     <thead>
     <tr>
       <th>libelle</th>
-      <th>date_creation</th>
+      <th>date de l'évenement</th>
       <th>lieu</th>
       <th>actions</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let evenement of apiEvenementList">
-      <td>{{evenement.libelle}}</td>
-      <td>{{evenement.date_creation}}</td>
-      <td>{{evenement.lieu}}</td>
-      <td>
-        <div class="row">
-          <div class="col-sm-3">
-            <button routerLink="/evenement/modifEvenement/{{evenement.id}}" type="button" class="btn btn-outline-warning">Modifier</button>
-          </div>
-          <div class="col-sm-3">
-            <button type="button" class="btn btn-outline-danger" (click)="suppEvenement(evenement)">Supprimer</button>
-          </div>
-        </div>
-      </td>
+    <tr *ngFor="let evenement of apiEvenementList" routerLink="/evenement/{{evenement.id}}">
+      <td>{{evenement.name}}</td>
+      <td>{{evenement.date}}</td>
+      <td>{{evenement.place}}</td>
     </tr>
     </tbody>
   </table>
