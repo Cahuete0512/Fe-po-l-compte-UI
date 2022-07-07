@@ -1,23 +1,24 @@
-<!--<div [ngStyle]="{backgroundImage:'url(../assets/images/neveuxNiecesNounou.jpg)'}" >-->
-<!--</div>-->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ecd8e0;">
-  <a class="navbar-brand" href="#">Fé Po l'Compte</a>
+  <a class="navbar-brand" href="#">
+    <img src="assets/images/logoApp.png" width="70" height="70" class="d-inline-block align-top" alt="logo de l'application">
+  </a>
+  <h3>Fé Po l'Compte &nbsp;</h3>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link active" aria-current="page" href="accueil"
-           routerLink="/evenement" routerLinkActive="active" ariaCurrentWhenActive="page">Accueil
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="accueil"
+           routerLink="/evenement" routerLinkActive="active" ariaCurrentWhenActive="page"><h3>Accueil</h3>
           <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" routerLink="/creatEvenement"
-           routerLinkActive="active" ariaCurrentWhenActive="page">Ajouter</a>
+           routerLinkActive="active" ariaCurrentWhenActive="page"><h3>Ajouter</h3></a>
       </li>
 <!--      <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" routerLink="/evenement/:id"-->
+<!--        <a class="nav-link" href="#" routerLink="/modifEvenement"-->
 <!--           routerLinkActive="active" ariaCurrentWhenActive="page">Modifier l'évenement</a>-->
 <!--      </li>-->
     </ul>

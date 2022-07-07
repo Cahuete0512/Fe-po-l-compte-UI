@@ -18,18 +18,25 @@
       <input id="place" type="text" class="form-control" formControlName="place" placeholder="Entrez le lieu de l'évenement">
     </div>
   </div><br/>
+  <br/>
+  <hr><br/>
+  <div>
+    <h1 style="text-align: center">Quels seront les participants à cet évènement ? </h1>
+  </div><br/>
+  <div *ngFor="let participant of participants"  class="form-check">
+    <label class="form-check-label" for="selectParticipant">
+      <input type="checkbox" class="form-check-input position-static" id="selectParticipant">
+      {{participant.surname}}&nbsp; {{participant.forename}}&nbsp; {{participant.email}} </label>
+  </div><br/>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-9">
-        <button type="submit" class="btn btn-outline-primary">Valider</button>
-      </div>
-      <div class="col-sm-3">
-        <button *ngIf="idEvenement" type="button" class="btn btn-outline-danger" (click)="suppEvenement()">Supprimer</button>
+        <button type="submit" class="btn btn-outline-primary float-end">Valider</button>
       </div>
     </div>
   </div>
 </form>
-
+<hr>
 <pre>
   {{evenementForm.value | json }}
 </pre>

@@ -1,20 +1,28 @@
 <div class="container">
-  <h1 style="text-align: center;">Récap des évenements organisés</h1><br/>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>libelle</th>
-      <th>date de l'évenement</th>
-      <th>lieu</th>
-      <th>actions</th>
-    </tr>
-    </thead>
-    <tbody>
+  <div class="table-responsive row">
+    <h1 style="text-align: center;">Récap des évenements organisés</h1><br/>
+    <table class="table table-hover">
+      <thead class="thead-light">
+      <tr>
+        <th class="col-3">libelle</th>
+        <th class="col-2">date de l'évenement</th>
+        <th class="col-3">lieu</th>
+        <th class="col-2">nombre de participants</th>
+        <th class="col-2">total en euros</th>
+      </tr>
+      </thead>
+      <tbody>
       <tr *ngFor="let evenement of apiEvenementList" routerLink="/evenement/{{evenement.id}}">
         <td>{{evenement.name}}</td>
         <td>{{evenement.date}}</td>
         <td>{{evenement.place}}</td>
+        <td>{{evenement.participantNumber}}</td>
+        <td>{{evenement.total}}</td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
+  <div class="container-fluid">
+    <button type="submit" class="btn btn-outline-primary" (click)="redirectToAddEvent()">Ajouter</button>
+  </div>
 </div>

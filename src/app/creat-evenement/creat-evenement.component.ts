@@ -18,6 +18,7 @@ export class CreatEvenementComponent implements OnInit {
   isCreation!: boolean;
   evenement: any;
   evenementForm!: FormGroup;
+  participants: any = [];
   private headers= new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
@@ -29,6 +30,13 @@ export class CreatEvenementComponent implements OnInit {
           private  router: Router) { }
 
   ngOnInit(): void {
+    let userObs = this.getParticipants();
+    let participants = this.participants;
+    userObs.subscribe((value => {
+      console.log(value);
+      this.participants = value;
+    }));
+
     this.idEvenement = this.route.snapshot.params['id'];
     this.isCreation = !this.idEvenement;
 
@@ -82,17 +90,7 @@ export class CreatEvenementComponent implements OnInit {
     this.router.navigate([(EVENT_ROUTE)])
   }
 
-  suppEvenement(){
-    let apiEvenementList = this.apiEvenementList;
-    let id = this.idEvenement;
-    console.log('suppression ' + this.idEvenement);
-    this.http.delete(URL_BACK + '/evenement/suppEvenement/'+this.idEvenement)
-      .subscribe({
-        next(value) {
-          console.log("suppression OK");
-          apiEvenementList.splice(apiEvenementList.indexOf(id), 1);
-        }
-      });
-    this.redirectApresClique();
+  getParticipants(): Observable<any> {
+    return this.http.get(URL_BACK + '/participants', {headers: this.headers});
   }
 }

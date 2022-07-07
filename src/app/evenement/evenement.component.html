@@ -1,1 +1,27 @@
-<p>evenement works!</p>
+<div class="container">
+  <h1 style="text-align: center;">{{evenement.name}}</h1><br/>
+  <dl class="row">
+    <dt class="col-sm-3">Où ? </dt>
+    <dd class="col-sm-9">Cet évènement aura lieu à : {{evenement.place}}</dd>
+
+    <dt class="col-sm-3">Quand ? </dt>
+    <dd class="col-sm-9">Vous pourrez faire la fête le : {{evenement.date}}</dd>
+
+    <dt class="col-sm-3">Nombre de participants ? </dt>
+    <dd class="col-sm-9">
+      <p>Vous serez au nombre de : {{evenement.participantDTOList.length}}</p>
+    </dd>
+<!--    <dt class="col-sm-3 text-truncate">Combien ? </dt>-->
+<!--    <dd class="col-sm-9"> Le montant total de cet évènement est de : {{evenement.total}}</dd>-->
+  </dl><br/>
+  <div class="container-fluid">
+    <div class="row justify-content-around">
+      <div class="col-md-3 .ml-md-auto">
+        <button type="submit" class="btn btn-outline-primary" (click)="modifEvenement()" >Modifier</button>
+      </div>
+      <div class="col-md-3 .ml-md-auto">
+        <button type="button" class="btn btn-outline-danger" (click)="suppEvenement()">Supprimer</button>
+      </div>
+    </div>
+  </div>
+</div>

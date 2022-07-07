@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {URL_BACK} from "../Constantes/app.const";
+import {CREAT_EVENT, EVENT_ROUTE} from "../app-routing.module";
 
 @Component({
   selector: 'app-evenementList',
@@ -37,5 +38,8 @@ export class EvenementListComponent implements OnInit {
 
   getEvenements(): Observable<any> {
     return this.http.get(URL_BACK + '/evenement', {headers: this.headers});
+  }
+  redirectToAddEvent(){
+    this.router.navigate([(CREAT_EVENT)])
   }
 }
