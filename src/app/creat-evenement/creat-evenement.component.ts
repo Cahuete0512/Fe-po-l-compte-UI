@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {first, Observable} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EVENT_ROUTE} from "../app-routing.module";
 import {URL_BACK} from "../Constantes/app.const";
+import {ParticipantModel} from "../modeles/Participant";
 
 @Component({
   selector: 'app-creat-evenementList',
@@ -18,7 +19,8 @@ export class CreatEvenementComponent implements OnInit {
   isCreation!: boolean;
   evenement: any;
   evenementForm!: FormGroup;
-  participants: any = [];
+  participants: ParticipantModel[] = [];
+  isSelected!: boolean;
   private headers= new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
@@ -31,7 +33,6 @@ export class CreatEvenementComponent implements OnInit {
 
   ngOnInit(): void {
     let userObs = this.getParticipants();
-    let participants = this.participants;
     userObs.subscribe((value => {
       console.log(value);
       this.participants = value;
@@ -46,6 +47,7 @@ export class CreatEvenementComponent implements OnInit {
       name: [],
       date: [],
       place: [],
+      participants:  new FormArray([])
     });
 
     if(!this.isCreation) {
@@ -56,7 +58,18 @@ export class CreatEvenementComponent implements OnInit {
           this.evenementForm.patchValue(ev);
           this.evenement = ev;
         });
+    }
+  }
 
+  onCheckboxChange(event: any) {
+
+    const participants = (this.evenementForm.controls['participants'] as FormArray);
+    if (event.target.checked) {
+      participants.push(new FormControl(this.participants.find(p => p.id == event.target.value)));
+    } else {
+      const index = participants.controls
+        .findIndex(x => x.value === event.target.value);
+      participants.removeAt(index);
     }
   }
 
@@ -93,4 +106,5 @@ export class CreatEvenementComponent implements OnInit {
   getParticipants(): Observable<any> {
     return this.http.get(URL_BACK + '/participants', {headers: this.headers});
   }
+
 }

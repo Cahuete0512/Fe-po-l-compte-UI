@@ -1,3 +1,6 @@
+<div>
+  <h1 style="text-align: center">Modifiez l'évènement</h1><br/>
+</div>
 <form [formGroup]="evenementForm" (ngSubmit)="submitEvenement()">
   <input type="hidden" formControlName="id">
   <div class="form-group col-auto">
@@ -21,12 +24,13 @@
   <br/>
   <hr><br/>
   <div>
-    <h1 style="text-align: center">Quels seront les participants à cet évènement ? </h1>
+    <h1 style="text-align: center">Quels seront les participants à cet évènement ? </h1><br/>
   </div><br/>
+
   <div *ngFor="let participant of participants"  class="form-check">
-    <label class="form-check-label" for="selectParticipant">
-      <input type="checkbox" class="form-check-input position-static" id="selectParticipant">
-      {{participant.surname}}&nbsp; {{participant.forename}}&nbsp; {{participant.email}} </label>
+<!--    <label class="form-check-label" for="selectedParticipants">-->
+      <input type="checkbox" class="form-check-input position-static" formArrayName="participants" [value]="participant.id" (change)="onCheckboxChange($event)">
+     {{participant.nom}}&nbsp;{{participant.prenom}}&nbsp;{{participant.email}} <!--  </label>-->
   </div><br/>
   <div class="container-fluid">
     <div class="row">
