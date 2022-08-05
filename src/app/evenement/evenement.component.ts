@@ -41,8 +41,6 @@ export class EvenementComponent implements OnInit {
     return this.http.get(URL_BACK + '/evenement/' + this.idEvenement, {headers: this.headers});
   }
 
-
-
   modifEvenement(){
     this.router.navigate(['evenement/modif/',this.idEvenement]);
   }

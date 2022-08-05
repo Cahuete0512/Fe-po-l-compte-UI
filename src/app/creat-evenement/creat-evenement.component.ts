@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {first, Observable} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -15,6 +15,8 @@ import {ParticipantModel} from "../modeles/Participant";
 
 export class CreatEvenementComponent implements OnInit {
   @Input() apiEvenementList: any = [];
+  titleAdd!: string;
+  titleModify!: string;
   idEvenement!: string;
   isCreation!: boolean;
   evenement: any;
@@ -40,8 +42,8 @@ export class CreatEvenementComponent implements OnInit {
 
     this.idEvenement = this.route.snapshot.params['id'];
     this.isCreation = !this.idEvenement;
-
-
+    this.titleAdd='Ajoutez votre évènement';
+    this.titleModify='Modifiez l\'évènement';
     this.evenementForm = this.fb.group({
       id: [],
       name: [],
@@ -51,7 +53,6 @@ export class CreatEvenementComponent implements OnInit {
     });
 
     if(!this.isCreation) {
-
       this.http.get(URL_BACK+'/evenement/'+this.idEvenement, {headers: this.headers})
         .pipe(first())
         .subscribe(ev => {
@@ -62,7 +63,6 @@ export class CreatEvenementComponent implements OnInit {
   }
 
   onCheckboxChange(event: any) {
-
     const participants = (this.evenementForm.controls['participants'] as FormArray);
     if (event.target.checked) {
       participants.push(new FormControl(this.participants.find(p => p.id == event.target.value)));
@@ -100,7 +100,7 @@ export class CreatEvenementComponent implements OnInit {
   }
 
   redirectApresClique(){
-    this.router.navigate([(EVENT_ROUTE)])
+    this.router.navigate([(EVENT_ROUTE)]);
   }
 
   getParticipants(): Observable<any> {
