@@ -22,10 +22,10 @@ export class CreatEvenementComponent implements OnInit {
   evenement: any;
   evenementForm!: FormGroup;
   participants: ParticipantModel[] = [];
-  isSelected!: boolean;
   private headers= new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
+  participantCheckbox!: Boolean;
 
   constructor(
           private fb: FormBuilder,
@@ -49,7 +49,8 @@ export class CreatEvenementComponent implements OnInit {
       name: [],
       date: [],
       place: [],
-      participants:  new FormArray([])
+      participants:  new FormArray([],
+      )
     });
 
     if(!this.isCreation) {
@@ -107,4 +108,7 @@ export class CreatEvenementComponent implements OnInit {
     return this.http.get(URL_BACK + '/participants', {headers: this.headers});
   }
 
+  isChecked(participant: ParticipantModel): boolean {
+    return this.evenement != undefined && this.evenement.participants.map((p: ParticipantModel) => p.id).includes(participant.id);
+  }
 }

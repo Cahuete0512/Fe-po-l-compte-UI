@@ -16,6 +16,7 @@ export class EvenementComponent implements OnInit {
     .set('Access-Control-Allow-Origin', '*');
   private idEvenement: any;
   evenement: any = {};
+  nbParticipants:number = 0;
 
   constructor(private http: HttpClient,
               private route: ActivatedRoute,
@@ -26,10 +27,10 @@ export class EvenementComponent implements OnInit {
   ngOnInit(): void {
     this.idEvenement = this.route.snapshot.params['id'];
     let evenObs = this.getEvenement();
-    let evenement = this.evenement;
     evenObs.subscribe((value => {
       console.log(value);
       this.evenement = value;
+      this.nbParticipants =  value.participants.length;
     }));
   }
 

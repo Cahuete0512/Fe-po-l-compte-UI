@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 style="text-align: center;">{{evenement.name}}</h1><br/>
+  <h1>{{evenement.name}}</h1><br/>
   <dl class="row">
     <dt class="col-sm-3">Où ? </dt>
     <dd class="col-sm-9">Cet évènement aura lieu à : {{evenement.place}}</dd>
@@ -9,7 +9,7 @@
 
     <dt class="col-sm-3">Nombre de participants ? </dt>
     <dd class="col-sm-9">
-      <p>Vous serez au nombre de : {{evenement.participantDTOList.size}}</p>
+      <p>Vous serez au nombre de : {{nbParticipants}}</p>
     </dd>
 <!--    <dt class="col-sm-3 text-truncate">Combien ? </dt>-->
 <!--    <dd class="col-sm-9"> Le montant total de cet évènement est de : {{evenement.total}}</dd>-->
@@ -23,5 +23,9 @@
         <button type="button" class="btn btn-outline-danger" (click)="suppEvenement()">Supprimer</button>
       </div>
     </div>
+  </div><br/>
+  <hr><br/>
+  <div>
+    <h1>Détails des remboursements</h1>
   </div>
 </div>

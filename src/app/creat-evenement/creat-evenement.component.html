@@ -1,8 +1,8 @@
 <div *ngIf="isCreation">
-  <h1 id="add" style="text-align: center">{{titleAdd}}</h1><br/>
+  <h1>{{titleAdd}}</h1><br/>
   </div>
 <div *ngIf="!isCreation">
-  <h1 style="text-align: center">{{titleModify}}</h1><br/>
+  <h1>{{titleModify}}</h1><br/>
 </div>
 <form [formGroup]="evenementForm" (ngSubmit)="submitEvenement()">
   <input type="hidden" formControlName="id">
@@ -26,17 +26,17 @@
   </div><br/>
   <br/>
   <hr><br/>
-  <div>
-    <h1 style="text-align: center">Qui participera à cet évènement ? </h1><br/>
-  </div><br/>
 
-  <div *ngFor="let participant of participants"  class="form-check">
-<!--    <label class="form-check-label" for="selectedParticipants">-->
+  <fieldset class="shadow p-3 mb-5 bg-body rounded">
+    <h3>Qui participera à cet évènement ? </h3>
+    <div *ngFor="let participant of participants"  class="form-check"><br/>
       <input type="checkbox" class="form-check-input position-static"
              formArrayName="participants" [value]="participant.id"
-             (change)="onCheckboxChange($event)" style="margin: auto;">
-     {{participant.nom}}&nbsp;{{participant.prenom}}&nbsp;{{participant.email}} <!--  </label>-->
-  </div><br/>
+             [checked]="isChecked(participant)"
+             (change)="onCheckboxChange($event)" style="margin: auto;">&nbsp;
+      <strong> Nom : </strong> {{participant.surname}} &nbsp; <strong> Prénom : </strong>&nbsp; {{participant.forename}}
+    </div><br/>
+  </fieldset>
   <hr><br/>
   <div class="container-fluid">
     <div class="row">
