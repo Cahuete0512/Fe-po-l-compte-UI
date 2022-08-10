@@ -25,7 +25,6 @@ export class CreatEvenementComponent implements OnInit {
   private headers= new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
-  participantCheckbox!: Boolean;
 
   constructor(
           private fb: FormBuilder,
@@ -35,10 +34,10 @@ export class CreatEvenementComponent implements OnInit {
 
   ngOnInit(): void {
     let userObs = this.getParticipants();
-    userObs.subscribe((value => {
+    userObs.subscribe(value => {
       console.log(value);
       this.participants = value;
-    }));
+    });
 
     this.idEvenement = this.route.snapshot.params['id'];
     this.isCreation = !this.idEvenement;

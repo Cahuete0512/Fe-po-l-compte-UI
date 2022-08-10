@@ -1,0 +1,17 @@
+#card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 30rem;
+  margin: 0 auto;
+}
+
+.card-body{
+  background-color: lavender;
+}
+
+input {
+  height: 40px;
+  width: 25rem;
+}

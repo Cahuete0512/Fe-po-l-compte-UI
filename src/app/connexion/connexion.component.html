@@ -1,0 +1,20 @@
+<h1>Page de connexion</h1><br/>
+<div class="shadow p-3 mb-5 bg-body rounded" id="card">
+  <div class="card-body">
+  <form>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="wxyz@wxyz.fr">
+    </div>
+    <div class="form-group">
+      <label for="surname">Nom</label>
+      <input type="text" class="form-control" id="surname" placeholder="Nom" [(ngModel)]="surname">
+    </div>
+    <div class="form-group">
+      <label for="forename">Prénom</label>
+      <input type="text" class="form-control" id="forename" placeholder="Prénom" [(ngModel)]="forename">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2" (click)="login()">Connexion</button>
+  </form>
+</div>
+</div>

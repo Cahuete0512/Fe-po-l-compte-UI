@@ -6,21 +6,23 @@ import { AppComponent } from './app.component';
 import { EvenementListComponent } from './evenementList/evenementList.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CreatEvenementComponent } from './creat-evenement/creat-evenement.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { EvenementComponent } from './evenement/evenement.component';
-
+import { ConnexionComponent } from './connexion/connexion.component';
 @NgModule({
   declarations: [
     AppComponent,
     EvenementListComponent,
     CreatEvenementComponent,
-    EvenementComponent
+    EvenementComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

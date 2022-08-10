@@ -27,11 +27,11 @@ export class EvenementComponent implements OnInit {
   ngOnInit(): void {
     this.idEvenement = this.route.snapshot.params['id'];
     let evenObs = this.getEvenement();
-    evenObs.subscribe((value => {
+    evenObs.subscribe(value => {
       console.log(value);
       this.evenement = value;
       this.nbParticipants =  value.participants.length;
-    }));
+    });
   }
 
   setEvent(event:any): void {
