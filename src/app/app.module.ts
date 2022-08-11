@@ -9,6 +9,9 @@ import { CreatEvenementComponent } from './creat-evenement/creat-evenement.compo
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { EvenementComponent } from './evenement/evenement.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import {GetParticipantService} from "./Service/GetParticipant.service";
+import {AuthGuardService} from "./Service/auth-guard.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,10 @@ import { ConnexionComponent } from './connexion/connexion.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    GetParticipantService,
+    [AuthGuardService]
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

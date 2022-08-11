@@ -7,14 +7,14 @@ import {URL_BACK} from "../Constantes/app.const";
   providedIn: 'root'
 })
 
-export class GetEvenementService {
+export class GetParticipantService {
 
   constructor(private http: HttpClient) {
 
   }
 
   ngOnInit() {
-    let eveObs = this.getEvenements();
+    let eveObs = this.getParticipants();
     eveObs.subscribe({
       next(value) {
         console.log(value);
@@ -22,12 +22,7 @@ export class GetEvenementService {
     });
   }
 
-  getEvenements(): Observable<any> {
-    return this.http.get(URL_BACK + '/evenement');
-  }
-
-  addEvenement(evenement: any, id:number){
-    evenement.id = id;
-    return this.http.post(URL_BACK + '/evenement', evenement);
+  getParticipants(): Observable<any> {
+    return this.http.get(URL_BACK + '/participants');
   }
 }
